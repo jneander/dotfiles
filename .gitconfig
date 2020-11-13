@@ -1,0 +1,96 @@
+[user]
+  name = Jeremy Neander
+	email = jeremy.neander@gmail.com
+
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+  fileMode = false
+
+[color]
+  ui = true
+
+[credential]
+  helper = store
+
+[http]
+  sslVerify = true
+
+[alias]
+  tagcommit = !sh -c 'git rev-list $0 | head -n 1'
+  b = branch
+  ba = branch -a
+  changed = diff-tree --no-commit-id --name-only -r
+  changed-between = diff --name-only --diff-filter=d
+  ci = commit
+  co = checkout
+  cp = cherry-pick
+  cp-ours = cherry-pick --strategy-option ours
+  cp-theirs = cherry-pick --strategy-option theirs
+  d = diff
+  dif = diff
+  dc = diff --cached
+  fixall = !git add -A && git fixup
+  fixup = commit --amend -C HEAD
+  fp = format-patch
+  g = !git
+  gg = !git grep
+  ggl = !git rev-list --all | xargs git grep
+  glog = log --graph --pretty=oneline --abbrev-commit
+  got = !git
+  gr = log --graph
+  hist = log --pretty=format:\"%Cgreen%h%Creset %Cblue%ad%Creset %s%C(yellow)%d%Creset %Cblue[%an]%Creset\" --graph --date=short
+  ignore = update-index --assume-unchanged
+  it = !git
+  k = !gitk &
+  ka = !gitk --all &
+  lastadded = diff-tree -r --no-commit-id --name-only --diff-filter=A
+  lastchanged = whatchanged -n 1
+  lastfiles = diff-tree --no-commit-id --name-only -r
+  lastmodified = diff-tree -r --no-commit-id --name-only --diff-filter=d
+  lc = log ORIG_HEAD.. --stat --no-merges
+  l = !git lg -n 10
+  lg = log --color --pretty=format:'* %C(red bold)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue bold)<%an>%Creset'
+  lgthis = !git lg master..HEAD
+  lp = log --patch-with-stat
+  mnf = merge --no-ff
+  mnff = merge --no-ff
+  mt = mergetool
+  p = format-patch -1
+  revto = !git reset $1 && git reset --soft HEAD@{1}
+  serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+  sra = svn rebase --all
+  sh = !git-sh
+  st = status
+  staged = diff --staged
+  stashes = stash list
+  stm = status --untracked=no
+  stfu = status --untracked=no
+  todos = diff-tree -G TODO --no-commit-id --name-only -r
+  unignore = update-index --no-assume-unchanged
+  wd = diff --color-words
+  wipe = !git co . && git clean -df
+  wstaged = diff --staged --color-words
+
+[push]
+  default = simple
+
+[pull]
+  rebase = true
+  default = simple
+
+[merge]
+  defaultToUpstream = true
+  ff = false
+  log = true
+
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
+[commit]
+  template = ~/.stCommitMsg
